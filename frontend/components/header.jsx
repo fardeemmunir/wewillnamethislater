@@ -5,13 +5,13 @@ import Store from "../lib/store";
 import { auth } from "../lib/firebase";
 
 const Header = () => {
+  const { user } = useContext(Store);
+
   return (
     <header className="bg-white py-4 mb-10">
       <div className="container flex justify-between items-center font-bold tracking-wide">
         <nav className="">
-          <Link href="/">
-            <a className="mr-4">Home</a>
-          </Link>
+          <p>Welcome, {user.name}!</p>
           {/* <Link href="/habits">
             <a>Habits</a>
           </Link> */}

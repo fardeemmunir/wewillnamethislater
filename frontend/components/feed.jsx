@@ -1,34 +1,18 @@
-import React from "react";
-import Header from "./header";
-
-const items = [
-  {
-    date: "5th Jan 2019",
-    contents: "Ran for 30 mins without stopping!",
-    author: "Bob"
-  },
-  {
-    date: "5th April 2019",
-    contents: "Ran for 30 mins without stopping!",
-    author: "Jennifer"
-  },
-  {
-    date: "5th Oct 2019",
-    contents: "Ran for 30 mins without stopping!",
-    author: "Kyle"
-  }
-];
+import React, { useContext } from "react";
+import StoreContext from "../lib/store";
 
 const Feed = () => {
+  const { messages } = useContext(StoreContext);
+
   return (
     <ul>
-      {items.map((info, i) => (
+      {messages.map((message, i) => (
         <li key={i} className="p-2 border-b-2">
-          <header className="flex mb-2">
-            <p className="font-bold pr-5">{info.author}</p>
-            <p className="opacity-50 italic">{info.date}</p>
+          <header className="flex mb-2 items-center">
+            <p className="font-bold pr-5">{message.username}</p>
+            <p className="opacity-50 italic text-xs">{message.created_at}</p>
           </header>
-          <p>{info.contents}</p>
+          <p>{message.content}</p>
         </li>
       ))}
     </ul>
