@@ -7,38 +7,19 @@ const initialState = {
 
 const StoreContext = createContext(initialState);
 
-function storeReducer(state, action) {
-  switch (action.type) {
-    case "UPDATE_USER": {
-      return {
-        ...state,
-        user: action.payload
-      };
-    }
-  }
-
-  return state;
-}
-
 const StoreProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(storeReducer, initialState);
+  const [user, setUser] = useState({});
   const [loaded, setLoaded] = useState(0);
   const incLoaded = () => setLoaded(val => val + 1);
 
   useEffect(() => {
-    const userUnsub = auth.onAuthStateChanged(user => {
+    const userUnsub = auth.onAuthStateChanged(async function(user) {
       if (user) {
-        dispatch({
-          type: "UPDATE_USER",
-          payload: {
-            id: user.uid
-          }
+        setUser({
+          id: user.uid
         });
       } else {
-        dispatch({
-          type: "UPDATE_USER",
-          payload: {}
-        });
+        setUser({});
       }
 
       incLoaded();
@@ -49,8 +30,24 @@ const StoreProvider = ({ children }) => {
     };
   }, []);
 
+  useEffect(() => {
+    if (!user.id || user.name) return;
+
+    const timer = setTimeout(() => {
+      fetch(`http://10.1.117.193/users/${user.id}`)
+        .then(res => res.json())
+        .then(data => {
+          setUser(data);
+        });
+    }, 500);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [user]);
+
   return (
-    <StoreContext.Provider value={state}>
+    <StoreContext.Provider value={{ user }}>
       {loaded >= 1 && children}
     </StoreContext.Provider>
   );

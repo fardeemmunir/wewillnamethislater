@@ -16,7 +16,18 @@ const Login = () => {
       auth
         .createUserWithEmailAndPassword(email, password)
         .then(res => {
-          console.log(`User with ${res.user.uid} has name ${name}`);
+          fetch("http://10.1.117.193/users", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              user: {
+                firebase_id: res.user.uid,
+                name
+              }
+            })
+          });
         })
         .catch(function(error) {
           console.log(error);

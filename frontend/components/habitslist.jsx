@@ -10,12 +10,13 @@ const HabitsList = () => {
           { name: "Meditate", checked: false },
           { name: "Run", checked: true }
         ].map(item => (
-          <li className="mb-5">
+          <li key={item.name} className="mb-5">
             <label className="flex items-center">
               <input
                 type="checkbox"
                 className="hidden"
                 checked={item.checked}
+                readOnly
               />
               <span
                 className={
