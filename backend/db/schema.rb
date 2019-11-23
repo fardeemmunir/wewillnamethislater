@@ -17,17 +17,22 @@ ActiveRecord::Schema.define(version: 2019_11_23_054148) do
 
   create_table "habits", force: :cascade do |t|
     t.bigint "user_id"
+    t.bigint "tag_id"
     t.string "title"
+    t.text "dates_completed", default: "[]"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["tag_id"], name: "index_habits_on_tag_id"
     t.index ["user_id"], name: "index_habits_on_user_id"
   end
 
   create_table "messages", force: :cascade do |t|
     t.bigint "user_id"
+    t.bigint "tag_id"
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["tag_id"], name: "index_messages_on_tag_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
@@ -47,6 +52,7 @@ ActiveRecord::Schema.define(version: 2019_11_23_054148) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "firebase_id"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -8,17 +8,17 @@
 
 # Tags
 running = Tag.create(name: 'running')
-swimming = Tag.create(name: 'swimming')
+meditating = Tag.create(name: 'meditation')
 
-# Users
-bob = User.create(name: 'Bob')
+# # Users
+# bob = User.create(name: 'Bob')
 
-# Subscriptions
-sub1 = Subscription.create(user: bob, tag: running)
+# # Subscriptions
+# sub1 = Subscription.create(user: bob, tag: running)
 
-# Habits
-hab1 = bob.habits.create(title: 'Run five miles')
+# # Habits
+# hab1 = bob.habits.create(title: 'Run five miles')
 
-# Messages
-mes1 = bob.messages.create(content: "I ran five miles today!")
+# # Messages
+# mes1 = bob.messages.create(content: "I ran five miles today!")
 

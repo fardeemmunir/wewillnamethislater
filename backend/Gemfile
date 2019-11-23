@@ -5,6 +5,9 @@ ruby '2.6.2'
 
 
 gem 'awesome_print', require: 'ap'
+gem 'jquery-rails'
+gem 'pusher'
+gem 'figaro'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
