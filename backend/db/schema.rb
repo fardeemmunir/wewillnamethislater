@@ -10,32 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_23_025852) do
+ActiveRecord::Schema.define(version: 2019_11_23_054148) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "boards", force: :cascade do |t|
-    t.string "name"
+  create_table "habits", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_habits_on_user_id"
   end
 
-  create_table "comments", force: :cascade do |t|
+  create_table "messages", force: :cascade do |t|
     t.bigint "user_id"
-    t.text "message"
+    t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_comments_on_user_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "subscriptions", force: :cascade do |t|
-    t.bigint "board_id"
+    t.bigint "tag_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["board_id"], name: "index_subscriptions_on_board_id"
+    t.index ["tag_id"], name: "index_subscriptions_on_tag_id"
     t.index ["user_id"], name: "index_subscriptions_on_user_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

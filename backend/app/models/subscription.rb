@@ -1,4 +1,4 @@
 class Subscription < ApplicationRecord
-    belongs_to :board
+    belongs_to :tag
     belongs_to :user
 end

@@ -1,6 +1,5 @@
-class Board < ApplicationRecord
+class Tag < ApplicationRecord
     has_many :subscriptions
     has_many :users, through: :subscriptions
-    has_many :comments, through: :users
-
+    has_many :messages, through: :users
 end

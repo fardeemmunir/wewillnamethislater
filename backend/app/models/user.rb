@@ -1,4 +1,5 @@
 class User < ApplicationRecord
-    has_many :boards, through: :subscriptions
-    has_many :comments
+    has_many :tags, through: :subscriptions
+    has_many :habits
+    has_many :messages
 end
