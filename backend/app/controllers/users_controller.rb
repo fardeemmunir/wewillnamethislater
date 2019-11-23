@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   
     def create
-        render json: { message: "test post" }
+        @user = User.new(user_params)
+        @user.save
     end
 
     private 
