@@ -4,7 +4,11 @@
 
 body {
   min-width: 100%;
-  background-color: #f5f8ff;
+  /* background-color: #f5f8ff; */
+  background: #f5f8ff url("/img.png") no-repeat;
+  background-size: 20%;
+  background-position: center bottom;
+  min-height: 100vh;
 }
 
 .container {

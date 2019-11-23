@@ -12,7 +12,7 @@ const Home = () => {
         <aside className="w-1/3 mr-5">
           <HabitsList />
         </aside>
-        <article className="bg-white w-2/3 rounded">
+        <article className="w-2/3 rounded">
           <Feed />
         </article>
       </div>

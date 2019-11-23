@@ -22,7 +22,7 @@ const Home = () => {
       {user.id ? (
         <HomePage />
       ) : (
-        <div className="w-full mx-auto mt-32">
+        <div className="w-full mx-auto pt-32">
           <Login />
         </div>
       )}

@@ -13,7 +13,7 @@ const HabitsList = () => {
   }
 
   return (
-    <div className="bg-white p-2 rounded">
+    <div className="p-2 rounded">
       <h1 className="text-xl mb-10">Today</h1>
 
       <ul>
